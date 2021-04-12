@@ -1,0 +1,41 @@
+openapi: "3.0.2"
+info:
+  title: PDF
+  description: "Api docs for generating PDF"
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/api/generate
+components:
+  schemas:
+    Pdf:
+      type: object
+      properties:
+        name:
+          type: string
+        dob:
+          type: string
+        location:
+          type: string
+paths:
+  /:
+    post:
+      tags:
+        - generate pdf
+      description: generate pdf with details
+      summary: A pdf with objects is generated
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Pdf"
+      responses:
+        "200":
+          description: done
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  done: 
+                    type: boolean
+                
